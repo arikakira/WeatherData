@@ -1,5 +1,10 @@
+import java.util.ArrayList;
+
 public class WeatherData
 {
+    public WeatherData(ArrayList<Double> temps) {
+        temperatures = temps;
+    }
     /** Guaranteed not to be null and to contain only non-null entries */
     private ArrayList<Double> temperatures;
 
@@ -7,8 +12,14 @@ public class WeatherData
     * Cleans the data by removing from temperatures all values that are less than
     * lower and all values that are greater than upper, as described in part (a)
     */
-    public void cleanData(double lower, double upper)
-    { /* to be implemented in part (a) */ }
+    public void cleanData(double lower, double upper) {
+        for(int i=0; i<temperatures,size(); i++) {
+            double temp = temperatures.get(i);
+            if(temp<lower || temp>upper) {
+                temperatures.remove(i);
+            }
+        }
+        }
 
     /**
     * Returns the length of the longest heat wave found in temperatures, as described in
