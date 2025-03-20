@@ -13,10 +13,11 @@ public class WeatherData
     * lower and all values that are greater than upper, as described in part (a)
     */
     public void cleanData(double lower, double upper) {
-        for(int i=0; i<temperatures,size(); i++) {
+        for(int i=0; i<temperatures.size(); i++) {
             double temp = temperatures.get(i);
             if(temp<lower || temp>upper) {
                 temperatures.remove(i);
+                i--;
             }
         }
         }
@@ -26,8 +27,25 @@ public class WeatherData
     * part (b)
     * Precondition: There is at least one heat wave in temperatures based on threshold.
     */
-    public int longestHeatWave(double threshold)
-    { /* to be implemented in part (b) */ }
+    public int longestHeatWave(double threshold) {
+        int heatWave = 0;
+        int max = 0;
+        for(double t : temperatures) {
+            if(t>threshold) {
+                heatWave++;
+            } else {
+                heatWave = 0;
+            }
+            if(heatWave > max) {
+                max = heatWave;
+            }
+        }
+        return max;
+    }
     
     // There may be instance variables, constructors, and methods that are not shown.
+
+    public String toString() {
+        return temperatures.toString();
+    }
 }
